@@ -235,7 +235,58 @@ Hice esta pequeña página como un lugar donde guardar algunos momentos importan
 y recordarte lo fuerte, inteligente y capaz que eres.  
 Cada foto representa esfuerzo, dedicación y sueños que poco a poco estás construyendo.
 </p>
+<style>
+button{
+font-family: 'Poppins', sans-serif;
+font-size: 18px;
+padding: 12px 28px;
+margin: 10px;
+border: none;
+border-radius: 30px;
+cursor: pointer;
 
+color: white;
+background: linear-gradient(45deg, #ff6ec4, #7873f5);
+
+box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+transition: all 0.35s ease;
+position: relative;
+overflow: hidden;
+}
+
+/* efecto al pasar el mouse */
+button:hover{
+transform: translateY(-5px) scale(1.05);
+box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* efecto al hacer click */
+button:active{
+transform: scale(0.95);
+}
+
+/* brillo animado */
+button::before{
+content: "";
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+);
+transition: 0.5s;
+}
+
+button:hover::before{
+left: 100%;
+}
+</style>
 <button class="btn" onclick="mostrarPreicfes()">Ver etapa Preicfes</button>
 
 </div>
