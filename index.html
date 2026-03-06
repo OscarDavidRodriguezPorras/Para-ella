@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Un pequeño lugar para ti</title>
+
+</div>
+
+<div class="tren-contenedor">
+
+<div class="tren-imagenes">
+
+<img src="imagenes_principal/foto1.jpg">
+<img src="imagenes_principal/foto2.jpg">
+<img src="imagenes_principal/foto3.jpg">
+<img src="imagenes_principal/foto4.jpg">
+<img src="imagenes_principal/foto5.jpg">
+<img src="imagenes_principal/foto6.jpg">
+<img src="imagenes_principal/foto7.jpg">
+<img src="imagenes_principal/foto8.jpg">
+<img src="imagenes_principal/foto9.jpg">
+
+<img src="imagenes_principal/foto1.jpg">
+<img src="imagenes_principal/foto2.jpg">
+<img src="imagenes_principal/foto3.jpg">
+<img src="imagenes_principal/foto4.jpg">
+<img src="imagenes_principal/foto5.jpg">
+<img src="imagenes_principal/foto6.jpg">
+<img src="imagenes_principal/foto7.jpg">
+<img src="imagenes_principal/foto8.jpg">
+<img src="imagenes_principal/foto9.jpg">
+
+</div>
+
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+.tren-contenedor{
+width:100%;
+overflow:hidden;
+padding:40px 0;
+}
+
+.tren-imagenes{
+display:flex;
+gap:25px;
+width:max-content;
+animation:moverTren 25s linear infinite;
+}
+
+.tren-imagenes img{
+height:180px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:transform 0.3s;
+}
+
+.tren-imagenes img:hover{
+transform:scale(1.08);
+}
+
+@keyframes moverTren{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-50%);
+}
+
+}
+
+.tren-imagenes img:hover{
+transform:scale(1.08);
+}
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#3a2c72,#5f4bb6);
+color:white;
+overflow-x:hidden;
+text-align:center;
+}
+
+/* ICONOS FLOTANTES */
+
+.icono{
+position:fixed;
+font-size:20px;
+animation:flotar 10s linear infinite;
+opacity:0.6;
+}
+
+@keyframes flotar{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+/* HERO */
+
+.hero{
+padding:120px 20px 60px;
+}
+
+.hero h1{
+font-size:60px;
+font-family:'Dancing Script',cursive;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:20px;
+opacity:0.9;
+}
+
+/* SECCION */
+
+.seccion{
+padding:80px 20px;
+max-width:900px;
+margin:auto;
+}
+
+.descripcion{
+font-size:18px;
+line-height:1.7;
+opacity:0.9;
+margin-top:20px;
+}
+
+/* BOTON */
+
+.btn{
+margin-top:40px;
+padding:15px 40px;
+border:none;
+border-radius:30px;
+font-size:18px;
+background:#ff4fa3;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+background:#ff2d8d;
+}
+
+/* FRASES */
+
+.frase{
+font-size:22px;
+margin-top:20px;
+margin-bottom:30px;
+font-style:italic;
+}
+
+/* CARRUSEL */
+
+.carrusel{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:20px;
+margin-top:40px;
+}
+
+.carrusel img{
+width:400px;
+height:500px;
+object-fit:contain;
+border-radius:20px;
+box-shadow:0px 15px 40px rgba(0,0,0,0.5);
+transition:0.4s;
+background:black;
+}
+
+.carrusel img:hover{
+transform:scale(1.05);
+}
+
+.flecha{
+font-size:40px;
+background:rgba(255,255,255,0.2);
+border:none;
+padding:15px 20px;
+border-radius:50%;
+cursor:pointer;
+color:white;
+transition:0.3s;
+}
+
+.flecha:hover{
+background:rgba(255,255,255,0.4);
+transform:scale(1.2);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ICONOS FLOTANTES -->
+
+<div class="icono" style="left:10%">✨</div>
+<div class="icono" style="left:20%;animation-delay:2s">⭐</div>
+<div class="icono" style="left:40%;animation-delay:4s">💖</div>
+<div class="icono" style="left:60%;animation-delay:1s">🐻</div>
+<div class="icono" style="left:80%;animation-delay:3s">🌸</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>Un pequeño lugar para ti ✨</h1>
+
+<p>Un espacio con recuerdos, esfuerzo y momentos bonitos.</p>
+
+</div>
+
+<!-- RECUERDOS -->
+
+<div class="seccion">
+
+<h2>Recuerdos</h2>
+
+<p class="descripcion">
+Hice esta pequeña página como un lugar donde guardar algunos momentos importantes
+y recordarte lo fuerte, inteligente y capaz que eres.  
+Cada foto representa esfuerzo, dedicación y sueños que poco a poco estás construyendo.
+</p>
+
+<button class="btn" onclick="mostrarPreicfes()">Ver etapa Preicfes</button>
+
+</div>
+
+<!-- PREICFES -->
+
+<div class="seccion" id="preicfes" style="display:none">
+
+<h2>Etapa Preicfes</h2>
+
+<p class="frase" id="frase"></p>
+
+<div class="carrusel" id="carruselFotos">
+
+<button class="flecha" onclick="cambiarFoto(-1)">❮</button>
+
+<img id="fotoCarrusel" src="Imagenes/foto1.jpg">
+
+<button class="flecha" onclick="cambiarFoto(1)">❯</button>
+
+</div>
+
+<button class="btn" onclick="toggleCarrusel()" id="btnOcultar">
+Ocultar imágenes
+</button>
+
+<script>
+
+function toggleCarrusel(){
+
+let seccion = document.getElementById("preicfes")
+
+seccion.style.display = "none"
+
+window.scrollTo({
+top: document.body.scrollTop,
+behavior: "smooth"
+})
+
+}
+
+/* FRASES */
+
+let frases=[
+"Cada esfuerzo de hoy construye el futuro que sueñas.",
+"No se trata de ser perfecto, sino de seguir avanzando.",
+"Todo el esfuerzo que haces hoy valdrá la pena.",
+"La disciplina de hoy es la libertad de mañana.",
+"Cada hora de estudio te acerca a tus sueños.",
+"Los sueños grandes empiezan con pequeños pasos.",
+"Nunca dudes de lo capaz que eres.",
+"Tu esfuerzo habla más fuerte que cualquier miedo."
+]
+
+document.getElementById("frase").innerText=frases[Math.floor(Math.random()*frases.length)]
+
+
+/* MOSTRAR SECCION */
+
+function mostrarPreicfes(){
+document.getElementById("preicfes").style.display="block"
+window.scrollTo({
+top:document.getElementById("preicfes").offsetTop,
+behavior:"smooth"
+})
+}
+
+
+/* CARRUSEL */
+
+let fotos=[
+"Imagenes/foto1.jpg",
+"Imagenes/foto2.jpg",
+"Imagenes/foto3.jpg",
+"Imagenes/foto4.jpg",
+"Imagenes/foto5.jpg",
+"Imagenes/foto6.jpg",
+"Imagenes/foto7.jpg",
+"Imagenes/foto8.jpg",
+"Imagenes/foto9.jpg",
+"Imagenes/foto10.jpg"
+]
+
+let indice=0
+
+function cambiarFoto(direccion){
+
+indice+=direccion
+
+if(indice<0){
+indice=fotos.length-1
+}
+
+if(indice>=fotos.length){
+indice=0
+}
+
+document.getElementById("fotoCarrusel").src=fotos[indice]
+
+}
+
+</script>
+
+</body>
+</html>
