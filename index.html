@@ -183,23 +183,27 @@ transform:scale(1.05);
 </nav>
 </body>
 <div id="reproductorMusica" style="
-position:fixed;
-top:20px;
-left:20px;
-background: rgba(255,255,255,0.2);
-padding:10px 15px;
-border-radius:15px;
-backdrop-filter: blur(5px);
-z-index:1000;
-display:flex;
-align-items:center;
-gap:10px;
-color:white;
-font-family:'Poppins', sans-serif;
+    position:fixed;
+    top:20px;
+    left:20px;
+    background: rgba(255,255,255,0.2);
+    padding:10px 15px;
+    border-radius:15px;
+    backdrop-filter: blur(5px);
+    z-index:1000;
+    color:white;
+    font-family:'Poppins', sans-serif;
+    text-align:center;
 ">
-<button onclick="cancionAnterior()">⏮️</button>
-<span id="nombreCancion">Canción 1</span>
-<button onclick="siguienteCancion()">⏭️</button>
+    <!-- Nombre de la canción arriba -->
+    <div id="nombreCancion" style="margin-bottom:8px; font-weight:500;">Canción 1</div>
+
+    <!-- Botones debajo del nombre -->
+    <div style="display:flex; justify-content:center; gap:10px;">
+        <button onclick="cancionAnterior()">⏮️</button>
+        <button id="btnPlayPause" onclick="toggleMusica()">⏯️</button>
+        <button onclick="siguienteCancion()">⏭️</button>
+    </div>
 </div>
 
 <audio id="musicaFondo" autoplay loop></audio>
@@ -856,12 +860,12 @@ let indiceFamilia = 0;
 
 // Lista de canciones
 let listaCanciones = [
-    {nombre:"Canción 1", ruta:"musica/piel-canela.mp3}.mp3"},
-    {nombre:"Canción 2", ruta:"musica/Sluna-llena.mp3"},
-    {nombre:"Canción 3", ruta:"musica/te-pienso.mp3"},
-    {nombre:"Canción 4", ruta:"musica/chica-irreal.mp3"},
-    {nombre:"Canción 5", ruta:"musica/Eres.mp3"},
-    {nombre:"Canción 6", ruta:"musica/solo-es-una.mp3"}
+    {nombre:"Piel canela", ruta:"musica/piel-canela.mp3}.mp3"},
+    {nombre:"Luna llena", ruta:"musica/Sluna-llena.mp3"},
+    {nombre:"Te peinso", ruta:"musica/te-pienso.mp3"},
+    {nombre:"Chica irreal", ruta:"musica/chica-irreal.mp3"},
+    {nombre:"Eres", ruta:"musica/Eres.mp3"},
+    {nombre:"Solo es una", ruta:"musica/solo-es-una.mp3"}
 ];
 
 let indiceCancion = 0; // canción actual
@@ -886,6 +890,25 @@ function cancionAnterior() {
     indiceCancion--;
     if(indiceCancion < 0) indiceCancion = listaCanciones.length - 1;
     reproducirCancion();
+}
+
+const btnPlayPause = document.getElementById("btnPlayPause");
+
+function toggleMusica() {
+    if (audio.paused) {
+        audio.play();
+        btnPlayPause.innerText = "⏯️"; // o cambia a ▶️ si quieres
+    } else {
+        audio.pause();
+        btnPlayPause.innerText = "⏸️"; // mostrar pausa cuando está detenido
+    }
+}
+
+function reproducirCancion() {
+    audio.src = listaCanciones[indiceCancion].ruta;
+    audio.play();
+    nombreCancionSpan.innerText = listaCanciones[indiceCancion].nombre;
+    btnPlayPause.innerText = "⏯️"; // indica que está sonando
 }
 
 // Inicializar la primera canción
