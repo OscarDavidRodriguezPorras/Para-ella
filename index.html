@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Un pequeño lugar para ti</title>
 
-</div>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
@@ -206,7 +205,7 @@ transform:scale(1.05);
     </div>
 </div>
 
-<audio id="musicaFondo" autoplay loop></audio>
+<audio id="musicaFondo" autoplay></audio>
 </nav>
 <!-- ICONOS FLOTANTES -->
 
@@ -216,6 +215,7 @@ transform:scale(1.05);
 <div class="icono" style="left:60%;animation-delay:1s">🐻</div>
 <div class="icono" style="left:80%;animation-delay:3s">🌸</div>
 
+<div id="inicio">
 <!-- HERO -->
 
 <div class="hero">
@@ -295,7 +295,18 @@ transform:translateX(-50%);
 <div class="seccion">
 
 <h2>Mi niña</h2>
+<div class="contador-amor">
+<div class="corazon">❤️</div>
 
+<div class="texto-amor">
+<span id="tiempoJuntos"></span>
+</div>
+
+<p class="mensaje-amor">
+Desde el día que empezó nuestra historia 💫
+</p>
+
+</div>
 <p class="descripcion">
 Hice esta pequeña página como un lugar donde guardar algunos momentos importantes
 y recordarte lo fuerte, inteligente y capaz que eres.  
@@ -303,6 +314,7 @@ Cada foto representa esfuerzo, dedicación y sueños que poco a poco estás cons
 
 <h2>En la parte superior derecha puedes elegir que quieres ver</h2>
 </p>
+</div>
 <div class="menu-etapas" id="menuEtapas" style="display:none;">
 
 <button class="btn" onclick="mostrarPreicfes()">Preicfes</button>
@@ -428,6 +440,61 @@ transform:translateY(0);
 .marco3{background: linear-gradient(135deg,#43cea2,#185a9d);}
 .marco4{background: linear-gradient(135deg,#f7971e,#ffd200);}
 .marco5{background: linear-gradient(135deg,#00c6ff,#0072ff);}
+
+.contador-amor{
+margin-top:40px;
+padding:30px;
+border-radius:25px;
+background:linear-gradient(135deg,#ff6ec4,#7873f5);
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+animation:aparecerContador 1.2s ease;
+}
+
+.texto-amor{
+font-family:'Dancing Script',cursive;
+font-size:36px;
+margin-top:10px;
+}
+
+.mensaje-amor{
+font-size:18px;
+opacity:0.9;
+margin-top:10px;
+}
+
+/* corazón latiendo */
+
+.corazon{
+font-size:40px;
+animation:latido 1.2s infinite;
+}
+
+@keyframes latido{
+
+0%{transform:scale(1)}
+25%{transform:scale(1.2)}
+40%{transform:scale(1)}
+60%{transform:scale(1.25)}
+100%{transform:scale(1)}
+
+}
+
+@keyframes aparecerContador{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
 </style>
 
 
@@ -552,20 +619,7 @@ document.getElementById("fotoCarrusel").src=fotos[indice]
 
 }
 
-function mostrarRecuerdos(){
 
-document.getElementById("frases").style.display="none"
-
-let menu = document.getElementById("menuEtapas")
-
-menu.style.display = "block"
-
-window.scrollTo({
-top: menu.offsetTop,
-behavior: "smooth"
-})
-
-}
 
 let frasesMotivacionales=[
 
@@ -580,20 +634,7 @@ let frasesMotivacionales=[
 
 ]
 
-function mostrarFrases(){
 
-document.getElementById("menuEtapas").style.display="none"
-
-document.getElementById("frases").style.display="block"
-
-nuevaFrase()
-
-window.scrollTo({
-top:document.getElementById("frases").offsetTop,
-behavior:"smooth"
-})
-
-}
 
 function nuevaFrase() {
   let frase = frasesMotivacionales[Math.floor(Math.random() * frasesMotivacionales.length)];
@@ -620,27 +661,7 @@ let poemas = [
   "Eres un faro en la noche, iluminando los caminos,\ncon cada gesto, con cada suspiro, con cada risa."
 ];
 
-function mostrarPoemas() {
-  // Oculta otras secciones
-  document.getElementById("frases").style.display = "none";
-  document.getElementById("menuEtapas").style.display = "none";
-  document.getElementById("preicfes").style.display = "none";
 
-  // Muestra poemas
-  let seccion = document.getElementById("poemas");
-  seccion.style.display = "block";
-
-  // Muestra un poema aleatorio al abrir
-  nuevoPoema();
-
-  generarIconosOriginales();
-
-  // Scroll suave
-  window.scrollTo({
-    top: seccion.offsetTop,
-    behavior: "smooth"
-  });
-}
 
 function nuevoPoema() {
   let poema = poemas[Math.floor(Math.random() * poemas.length)];
@@ -663,6 +684,7 @@ function mostrarRecuerdos() {
   // Oculta otras secciones globales
   document.getElementById("frases").style.display = "none";
   document.getElementById("poemas").style.display = "none";
+  document.getElementById("poemas").style.display = "none";
 
   // Oculta todas las sub-secciones de Recuerdos
   document.getElementById("preicfes").style.display = "none";
@@ -677,9 +699,9 @@ function mostrarRecuerdos() {
   window.scrollTo({
     top: document.getElementById("menuEtapas").offsetTop,
     behavior: "smooth"
-    
-    
   });
+
+  
 }
 function mostrarFrases() {
   // Oculta todas las secciones
@@ -860,7 +882,7 @@ let indiceFamilia = 0;
 
 // Lista de canciones
 let listaCanciones = [
-    {nombre:"Te amo y mas", ruta:"musica/te-amo.mp3"},
+    {nombre:"Te amo y mas", ruta:"musica/Te-amo.mp3"},
     {nombre:"Piel canela", ruta:"musica/piel-canela.mp3}.mp3"},
     {nombre:"Luna llena", ruta:"musica/Sluna-llena.mp3"},
     {nombre:"Te peinso", ruta:"musica/te-pienso.mp3"},
@@ -872,13 +894,6 @@ let listaCanciones = [
 let indiceCancion = 0; // canción actual
 const audio = document.getElementById("musicaFondo");
 const nombreCancionSpan = document.getElementById("nombreCancion");
-
-// Función para reproducir la canción actual
-function reproducirCancion() {
-    audio.src = listaCanciones[indiceCancion].ruta;
-    audio.play();
-    nombreCancionSpan.innerText = listaCanciones[indiceCancion].nombre;
-}
 
 // Funciones de control
 function siguienteCancion() {
@@ -910,10 +925,34 @@ function reproducirCancion() {
     audio.play();
     nombreCancionSpan.innerText = listaCanciones[indiceCancion].nombre;
     btnPlayPause.innerText = "⏯️"; // indica que está sonando
+    audio.addEventListener("ended", function(){
+    siguienteCancion();
+});
 }
 
 // Inicializar la primera canción
 reproducirCancion();
+
+function actualizarTiempoJuntos(){
+
+let inicio = new Date("2025-12-03T00:00:00")
+let ahora = new Date()
+
+let diferencia = ahora - inicio
+
+let dias = Math.floor(diferencia / (1000*60*60*24))
+let horas = Math.floor((diferencia / (1000*60*60)) % 24)
+let minutos = Math.floor((diferencia / (1000*60)) % 60)
+
+document.getElementById("tiempoJuntos").innerText =
+dias + " días " + horas + " horas " + minutos + " minutos juntos ❤️"
+
+}
+
+setInterval(actualizarTiempoJuntos,1000)
+
+actualizarTiempoJuntos()
+
 
 
 </script>
